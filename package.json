@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -15,7 +16,6 @@
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.7.1",
     "@types/react-map-gl": "^6.1.6",
-    "prisma": "latest",
     "axios": "^1.6.0",
     "cors": "^2.8.5",
     "framer-motion": "^10.16.5",
