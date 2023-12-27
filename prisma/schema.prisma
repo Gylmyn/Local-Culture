@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Pin {
+  id        Int     @id @default(autoincrement())
+  latitude  Decimal
+  longitude Decimal
+  title     String
+  desc      String
+}
+
+model Videos {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
+model Fotos {
+  id    Int    @id @default(autoincrement())
+  url   String
+  title String
+}
+
+model Artikel {
+  id        Int      @id @default(autoincrement())
+  url       String
+  desc      String
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id        Int      @id @default(autoincrement())
+  nama      String
+  client    String
+  prgress   String
+  deadline  String
+  nilai     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
