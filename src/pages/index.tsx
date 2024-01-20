@@ -5,6 +5,7 @@ import ArtikleCard from "@/components/ArtikleCard";
 import Layout from "@/components/Layout";
 import Buttons from "@/components/Buttons";
 import Link from "next/link";
+import axios from 'axios';
 
 type artikelData = {
   id: number;
@@ -23,16 +24,14 @@ type fotosType = {
 export default function Home() {
   const [Foto, setFoto] = useState<fotosType[]>([]);
   const fetchData = async () => {
-    const response = await fetch("/api/foto");
-    const dataFotos = await response.json();
-    setFoto(dataFotos);
+    const response = await axios.get("/api/foto");
+    setFoto(response.data);
   };
 
   const [Artikel, setArtikel] = useState<artikelData[]>([]);
   const fetchDataArtikel = async () => {
-    const response = await fetch("/api/artikel");
-    const dataArtikels = await response.json();
-    setArtikel(dataArtikels);
+    const response = await axios.get("/api/artikel");
+    setArtikel(response.data);
   };
 
   useEffect(() => {

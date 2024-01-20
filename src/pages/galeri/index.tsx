@@ -111,7 +111,7 @@ export default function Index() {
 
         <div ref={contentRef}>
           {!Switch ? (
-            <div className="pt-[20px] grid md:grid-cols-4 grid-cols-3 md:mx-[100px] mx-6 gap-[10px]">
+            <div className="pt-[20px] grid md:grid-cols-4 grid-cols-2 md:mx-[100px] mx-6 gap-[10px]">
               {Foto.slice(0, displayedImages).map((image, index) => (
                 <Link key={index} href={`/galeri/${image.id}`}>
                   <div className="relative md:h-[340px] h-44 group overflow-hidden rounded ">
