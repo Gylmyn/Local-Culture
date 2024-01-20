@@ -13,6 +13,7 @@ type ButtonProps = {
   shadow?: boolean;
   roundedfull? : boolean;
   href?: string;
+  onClik?: void;
 };
 
 function Buttons(props: ButtonProps) {
@@ -42,7 +43,9 @@ function Buttons(props: ButtonProps) {
       : "null";
 
   return (
-    <Link
+    <div onClick={() =>props.onClik}>
+      <Link
+    
       href={props.href ? props.href : ""}
       className={typeClass === "bg-black" ? `flex flex-row-reverse ${roudedfull} gap-[8px] items-center  justify-center cursor-pointer ${shadowClass} ${typeClass} ${sizeClass} ${props.custom}` : `flex gap-[8px] items-center ${roudedfull}  justify-center cursor-pointer ${shadowClass} ${typeClass} ${sizeClass} ${props.custom}`}
     >
@@ -57,6 +60,8 @@ function Buttons(props: ButtonProps) {
         />
       )}
     </Link>
+    </div>
+    
   );
 }
 

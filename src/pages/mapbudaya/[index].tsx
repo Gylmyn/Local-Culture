@@ -60,7 +60,7 @@ export default function DetailPin() {
           <div className="flex gap-[15px]">
             <Bread breadTitle="Beranda" href="/" logo="/Home.svg" />
             <Bread breadTitle="Galeri" href="/galeri" logo="/Galery.svg" />
-            <Bread breadTitle="Map Budaya" href="/mapbudaya" logo="/Map.svg" />
+            <Bread breadTitle="Map" href="/mapbudaya" logo="/Map.svg" />
           </div>
         </div>
         <div className="md:mx-[100px] md:pb-40 pb-10 pl-6 md:pl-0 md:max-w-3xl">

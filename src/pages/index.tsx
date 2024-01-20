@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Divider from "@/components/Divider";
 import ArtikleCard from "@/components/ArtikleCard";
@@ -22,6 +22,15 @@ type fotosType = {
 };
 
 export default function Home() {
+  const linkRef = useRef(null);
+  const goTo = (ref : any) => {
+     window.scrollTo({
+      top:ref.offsetTop,
+      left:0,
+      behavior:'smooth'
+    })
+
+  }
   const [Foto, setFoto] = useState<fotosType[]>([]);
   const fetchData = async () => {
     const response = await axios.get("/api/foto");
@@ -54,8 +63,8 @@ export default function Home() {
   });
   return (
     <Layout>
-      <div className="hero w-full bg-primary-50 flex justify-between md:flex-row flex-col py-[110px] items-center md:px-[100px] mt-8 md:mt-20">
-        <div className="px-20 md:px-0" >
+      <div className="w-full bg-primary-50 flex justify-between md:flex-row flex-col pt-[110px] pb-10 items-center md:px-[100px] mt-8 md:mt-20">
+        <div className="mx-20 md:mx-0" >
           <p
             className={`md:text-[48px] text-3XL font-bold md:max-w-2xl md:leading-[55px] leading-tight text-[#323539]`}
           >
@@ -72,13 +81,10 @@ export default function Home() {
             menjaga keragaman budaya yang membentuk identitas kita.
           </p>
           <div className="pt-[32px] pb-[16px] flex gap-[16px] items-center">
-            <Buttons
-              text="Get Started"
-              type="primary"
-              size="large"
-              textCustom="font-semibold"
-            />
-          
+            <button className="bg-primary-800 py-3 px-6 rounded-lg" onClick={() =>goTo(linkRef.current)}>
+              <p className="text-white font-semibold">Get Started</p>
+            </button>
+        
           </div>
         </div>
         <div className="hidden md:flex">
@@ -90,13 +96,13 @@ export default function Home() {
           ></Image>
         </div>
       </div>
-      <div className="pt-[93px]">
+      <div ref={linkRef} className="pt-[93px]">
         <Divider
           title="Galeri Budaya Terkini"
           desc=" Mengenal tradisi, budaya, kesenian dan segala macam warisan lokal melalui dokumentasi galeri budaya"
         />
       </div>
-      <div className="pt-[48px] grid md:grid-cols-4 grid-cols-2 justify-center items-center md:mx-[111px] mx-4 gap-[21px] z-[100]">
+      <div  className="pt-[48px] grid md:grid-cols-4 grid-cols-2 justify-center items-center md:mx-[111px] mx-4 gap-[21px] z-[100]">
         {Foto.slice(0, 8).map((image, index) => (
           <Link key={index} href={`/galeri/${image.id}`}>
             <div className="relative md:h-[219px] h-44  group overflow-hidden rounded ">
